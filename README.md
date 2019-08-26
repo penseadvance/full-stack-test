@@ -79,7 +79,7 @@ We're also providing a minimal [Express](https://expressjs.com/) setup. You **mu
 implement your contact form endpoint on the single POST route we provided you on the
 `server.js` file.
 
-You can get more details on Parcel and Express on its documentation pages:
+You can get more details on Parcel and Express on their documentation pages:
 * [Parcel](https://parceljs.org/getting_started.html)
 * [Express](https://expressjs.com/en/starter/installing.html)
 
