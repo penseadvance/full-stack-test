@@ -45,12 +45,19 @@ and a message in the response body indicating which fields are not valid in case
 If the sent form fails to validate at the back-end, the message containing the invalid
 fields must be shown to the user on the front-end.
 
-If the sent form is valid, the back-end must **generate a unique id** for the given form and
-save the form data as JSON in a file named `<form_id>.json`. You can generate the unique id
-any way you want to. For instance, if the generated id was `aM2t52kml`, you should create a
-file named `aM2t52kml.json` and save the form data as JSON in it. On success, simply return
+If the sent form is valid, the back-end must generate an unique ID for the given form and
+save its data inside a simple file-based JSON database.
+
+The database must be a single JSON file that contains a single Object. Each valid form must
+be saved within this Object. Each key of this Object must be the generated ID of the form,
+and its value must be an Object containing the form data. An example JSON database file can
+be found on [specs/forms.example.json](specs/forms.example.json). On success, simply return
 an HTTP code of 200 to the front-end and show the user a nice success message, as proposed
 on the [specs/02-SUCCESS.jpg](specs/02-SUCCESS.jpg) file.
+
+You are free to generate unique IDs using any method as long as they are compatible to be
+used as Object keys. You can also name your JSON file whatever you want, and place it
+anywhere inside your project structure.
 
 *PS: although this double-validation strategy seems unnecessary for a simple test project,
 we simply want to know how you'd handle this case in real life. When testing your project,
@@ -116,14 +123,15 @@ organized code above everything else. However, we also expect you:
 ### Javascript
 * To use vanilla Javascript (ES5, ES6/2015+) on most if not all of your code.
 * To write your own validation logic. You can't use libraries to help you with this task.
-* To have few dependencies on both front and back-end. Having no dependencies at all **will
-  yield you extra points**.
+* To use an UI library or framework (like React, Vue, etc.) if you feel that it makes sense
+  to. Remember that using any of these libraries and providing SSR **will yield you extra
+  points**.
+* To have few dependencies on both front and back-end. Apart from framework dependencies
+  like React, Vue, etc., **the less dependencies you use, the more extra points you will
+  get**.
 * To put the browsers' native APIs to good use. Remember: Parcel 
   [will transpile your ES6+ code automatically](https://en.parceljs.org/javascript.html#default-babel-transforms)
   using Babel by default.
-* To use an UI library or framework (like React, Vue, etc) if you feel that it makes sense
-  to. Remember that using any of these libraries and providing SSR **will yield you extra
-  points**.
 
 ### Layout/Design
 * To make a responsive layout based on the original design. We provided a desktop-first 
